@@ -1,3 +1,6 @@
+![Tests](https://github.com/lakshmi22-2007/copilot-dev-days-workshop/actions/workflows/test.yml/badge.svg)
+
+
 # 🚀 GitHub Copilot Dev Days: Hands-on Workshop
 
 **10:45 – 13:30 IST · Intermediate · 10 chapters + bonus · Works on GitHub Copilot Free**
