@@ -52,6 +52,11 @@ h2 {
   font-size: 1.1rem;
 }
 
+.new-best {
+  color: var(--correct);
+  font-weight: 700;
+}
+
 .muted {
   color: var(--muted);
   margin: 0;

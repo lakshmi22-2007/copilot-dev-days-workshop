@@ -8,6 +8,7 @@ const {
   calculatePercentage,
   getGrade,
   formatTimeLeft,
+  isNewBestScore,
   createQuiz,
   answerQuestion,
   nextQuestion,
@@ -93,4 +94,17 @@ test("getGrade gives an A for exactly 90%", () => {
 test("formatTimeLeft formats seconds with a timer icon", () => {
   assert.equal(formatTimeLeft(12), "⏱ 12s");
   assert.equal(formatTimeLeft(0), "⏱ 0s");
+});
+
+test("isNewBestScore returns true when there is no saved best", () => {
+  assert.equal(isNewBestScore(0, null), true);
+});
+
+test("isNewBestScore returns true when current score is higher", () => {
+  assert.equal(isNewBestScore(81, 80), true);
+});
+
+test("isNewBestScore returns false when current score is not higher", () => {
+  assert.equal(isNewBestScore(80, 80), false);
+  assert.equal(isNewBestScore(79, 80), false);
 });

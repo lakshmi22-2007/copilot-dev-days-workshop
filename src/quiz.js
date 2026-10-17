@@ -48,6 +48,13 @@ function formatTimeLeft(seconds) {
 }
 
 /**
+ * Returns true when the current percentage beats the saved best percentage.
+ */
+function isNewBestScore(current, best) {
+  return best === null || current > best;
+}
+
+/**
  * Creates the initial quiz state without changing the supplied questions.
  */
 function createQuiz(questions) {
@@ -94,6 +101,7 @@ if (typeof module !== "undefined" && module.exports) {
     calculatePercentage,
     getGrade,
     formatTimeLeft,
+    isNewBestScore,
     createQuiz,
     answerQuestion,
     nextQuestion,
