@@ -47,7 +47,56 @@ function formatTimeLeft(seconds) {
   return `⏱ ${seconds}s`;
 }
 
+/**
+ * Creates the initial quiz state without changing the supplied questions.
+ */
+function createQuiz(questions) {
+  return { questions: [...questions], current: 0, score: 0, answered: false };
+}
+
+/**
+ * Records an answer and returns the resulting state plus whether it was correct.
+ */
+function answerQuestion(state, selectedIndex) {
+  if (state.answered) return { state: { ...state }, correct: false };
+
+  const question = state.questions[state.current];
+  const correct = selectedIndex !== null && isCorrect(question, selectedIndex);
+  return {
+    state: {
+      ...state,
+      score: state.score + (correct ? 1 : 0),
+      answered: true,
+    },
+    correct,
+  };
+}
+
+/**
+ * Advances to the next question without changing the supplied state.
+ */
+function nextQuestion(state) {
+  return { ...state, current: state.current + 1, answered: false };
+}
+
+/**
+ * Returns true when there are no more questions to display.
+ */
+function isQuizFinished(state) {
+  return state.current >= state.questions.length;
+}
+
 // Lets Node.js tests load this file. Browsers ignore this block.
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { shuffle, isCorrect, calculatePercentage, getGrade, formatTimeLeft };
+  module.exports = {
+    shuffle,
+    isCorrect,
+    calculatePercentage,
+    getGrade,
+    formatTimeLeft,
+    createQuiz,
+    answerQuestion,
+    nextQuestion,
+    isQuizFinished,
+  };
 }
