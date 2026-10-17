@@ -1,0 +1,10 @@
+{
+  "name": "copilot-dev-days-quiz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Starter project for the GitHub Copilot Dev Days hands-on workshop",
+  "scripts": {
+    "test": "node --test tests/quiz.test.js tests/questions.test.js",
+    "start": "npx --yes http-server src -p 8080 -c-1"
+  }
+}
